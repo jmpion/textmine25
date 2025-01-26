@@ -1,0 +1,24 @@
+entity_markers:
+  entity_markers_on: 'Yes' # Défaut : 'Yes'. Autres valeurs : 'No'.
+  wrapper_mode: 'High-level' # Défaut : 'High-level'. Autres valeurs : 'Simple', 'Complex'.'Complex' n'est pas recommandé car il n'est peut-être pas implémenté sur toutes les configurations d'entraînement.
+model:
+  name: 'almanach/camembert-base' # Défaut : 'almanach/camembert-base'.
+  max_len: 512
+  class_weights: 'balanced' # 'default' if default setting. 'balanced' for balanced class weights.
+one_class:
+  one_class_on: 'Yes' # 'Yes' if the training is done for a model in a one-vs-all classes setting, for specialized models. 'No' if the training is done on all classes at the same time.
+  support: 'Yes' # 'Yes' if restrain to the correctly typed relations for one class, or 'No' if not. Default is 'No'.
+llm_yn:
+  llm_name: 'google/gemma-2-9b-it' # 'Unbabel/TowerInstruct-7B-v0.1' # 'google/gemma-2-9b-it'
+  mode: 'openai' # 'openai' for OpenAI API; 'huggingface' for HuggingFace models.
+  train_or_test: 'Test' # 'Train' or 'Test', depending on whether we apply it to the training dataset or the test dataset.
+trainer:
+  logging_steps: 10
+  eval_steps: 10
+  save_steps: 100
+training:
+  gradient_accumulation_steps: 8
+extraction_mode: 'special_tokens' # either 'all tokens' or 'only special tokens.
+separate_spans_embeddings: 'Yes' # Default to 'No', can be set to 'Yes'.
+spert: 'Yes' # Default to 'No'. Can be set to 'Yes'.
+submission_type: 'TEST' # 'TEST' for the testing data, 'VALIDATION' for the 100 last rows from training data.
